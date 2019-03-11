@@ -19,3 +19,9 @@ if __name__ == '__main__':
     a = _list.pop(2)
     del _list[2]
     _list.remove('huang')
+
+    #
+    ll = [l for l in _list]
+
+    # 用特定字符来连接一个集合
+    print("&".join(_list))

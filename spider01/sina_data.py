@@ -47,7 +47,7 @@ def find_card_info():
 
 
 def save(info_lsit, name):
-    full_path = f'D:{name}.csv'
+    full_path = f'{name}.csv'
     if os.path.exists(full_path):
         with open(full_path, 'a') as f:
             writer = csv.writer(f)
