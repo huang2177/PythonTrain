@@ -41,6 +41,7 @@ def download(content):
             file_path = path + '/' + file_name
             urllib.request.urlretrieve(src, file_path)
 
+
 def get_html():
     response = urllib.request.urlopen(handle_request())
     return response.read().decode()
