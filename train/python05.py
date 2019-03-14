@@ -1,5 +1,5 @@
 # from src.python04 import *
-import base.python04 as p
+import train.python04 as p
 
 a = 10
 
