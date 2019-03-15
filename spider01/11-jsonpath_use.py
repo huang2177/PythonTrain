@@ -23,7 +23,8 @@ def main():
         'upgrade-insecure-requests': '1',
     }
 
-    content = json.loads(NetUtils.get(url, headers))
+    content = NetUtils.get(url, headers)
+    content = json.loads(content[content.index('{'):-1])
     print(type(content))
 
 

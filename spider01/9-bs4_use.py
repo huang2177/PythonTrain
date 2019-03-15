@@ -2,7 +2,7 @@
 from bs4 import BeautifulSoup as BS
 
 # 转化本地文件
-soup = BS(open('test.html'), 'lxml')
+soup = BS(open('in-test.html'), 'lxml')
 
 # print(soup.img['src'])  # 只能获取第一个标签
 # print(soup.div.attrs)  # 获取所有的属性

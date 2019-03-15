@@ -14,7 +14,8 @@ def start_chrome():
 
 
 def input_data(s_time, e_time):
-    return f'https://weibo.com/qinlan?is_ori=1&key_word=&start_time={s_time}&end_time={e_time}&is_search=1&is_searchadv=1#_0'
+    return f'https://weibo.com/qinlan?is_ori=1&key_word=' \
+           f'&start_time={s_time}&end_time={e_time}&is_search=1&is_searchadv=1#_0'
 
 
 def scroll_down():

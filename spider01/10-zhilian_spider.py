@@ -38,7 +38,7 @@ class ZhiLianSpider(object):
 
     def parse_content(self, html):
         jobs = []
-        soup = BS(open('zhilian.html', 'r', encoding='utf-8'), 'lxml')
+        soup = BS(open('in-zhilian.html', 'r', encoding='utf-8'), 'lxml')
         content = soup.find('div', id='listContent')
         cards = content.select('.contentpile__content__wrapper__item ')
         for card in cards:
@@ -46,7 +46,7 @@ class ZhiLianSpider(object):
             saray = card.find('p', class_='contentpile__content__wrapper__item__info__box__job__saray')
             demand = card.find('li', class_='contentpile__content__wrapper__item__info__box__job__demand__item')
 
-            with open('python_jobs.txt', 'a', encoding='utf-8') as f:
+            with open('out-python_jobs.txt', 'a', encoding='utf-8') as f:
                 f.write(job_name.text.strip().replace("\n", "")
                         + ' : ' + saray.text.strip().replace("\n", "")
                         + ':' + demand.text.strip().replace("\n", "") + '\n')
