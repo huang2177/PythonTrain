@@ -1,6 +1,6 @@
 # 线程（通过继承 的方式）
-import time
 import threading
+import time
 
 
 class TestThread(threading.Thread):
@@ -13,5 +13,8 @@ class TestThread(threading.Thread):
             time.sleep(1)
 
 
+# lock = threading.Lock
+# lock.acquire()
+# lock.release()
 test = TestThread('TestThread')
 test.start()

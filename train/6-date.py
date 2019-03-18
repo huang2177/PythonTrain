@@ -1,6 +1,5 @@
-from urllib.request import urlopen
-from datetime import date
 import datetime
+from datetime import date
 
 
 class Test:

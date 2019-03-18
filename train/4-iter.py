@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 文件名: python04.py
+# 文件名: 4-iter.py
 
 import sys
 
