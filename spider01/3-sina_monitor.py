@@ -6,7 +6,7 @@ url = 'https://weibo.com/2081681517/HiXo0vTJC?ref=feedsdk&type=comment#_rnd15515
 
 
 def start_chrome():
-    driver = wd.Chrome(executable_path='D:/PythonProject/chromedriver.exe')
+    driver = wd.Chrome(executable_path='../chromedriver.exe')
     driver.start_client()
     return driver
 

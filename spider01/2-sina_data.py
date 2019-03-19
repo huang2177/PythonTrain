@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 def start_chrome():
-    driver = webdriver.Chrome(executable_path='D:/PythonProject/chromedriver.exe')
+    driver = webdriver.Chrome(executable_path='D:../chromedriver.exe')
     driver.start_client()
     return driver
 

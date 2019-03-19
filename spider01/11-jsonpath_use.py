@@ -1,7 +1,7 @@
 # jsonpath的使用
 
 import json
-from jsonpath import jsonpath
+import jsonpath
 
 from base.netutils import NetUtils
 
@@ -25,7 +25,11 @@ def main():
 
     content = NetUtils.get(url, headers)
     content = json.loads(content[content.index('{'):-1])
-    print(type(content))
+    comments = content['rateDetail']['rateList']
+    print(comments)
+
+    for comment in comments:
+        print(jsonpath.jsonpath(comment, '$..userInfo'))
 
 
 if __name__ == '__main__':
