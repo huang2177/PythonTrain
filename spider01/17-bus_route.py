@@ -57,6 +57,7 @@ def detail_info(bus):
         #     f.write(num + ' : ' + station_name + '\n')
         print(num + ' : ' + station_name)
 
+
 def main():
     try:
         in_str = input('请输入要查询的公交：')
