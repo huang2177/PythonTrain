@@ -3,18 +3,27 @@ import threading
 import time
 
 
-class TestThread(threading.Thread):
+class TestThread1(threading.Thread):
     def __init__(self, name=None):
         threading.Thread.__init__(self, name=name)
 
     def run(self):
         for i in range(0, 5):
-            print(threading.current_thread().name + ' Test', i)
+            print(threading.current_thread().name, i)
             time.sleep(1)
 
 
-# lock = threading.Lock
-# lock.acquire()
-# lock.release()
-test = TestThread('TestThread')
-test.start()
+class TestThread2(threading.Thread):
+    def __init__(self, name=None):
+        threading.Thread.__init__(self, name=name)
+
+    def run(self):
+        for i in range(0, 5):
+            print(threading.current_thread().name, i)
+            time.sleep(1)
+
+
+test1 = TestThread1('TestThread1')
+test2 = TestThread2('TestThread2')
+test1.start()
+test2.start()
