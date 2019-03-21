@@ -8,5 +8,15 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="spider01.demo12306.login_info.parse" />
+          <option value="spider01.demo12306.login_info.print_response" />
+          <option value="spider01.demo12306.tickets_info.find_station_tag" />
+          <option value="spider01.demo12306.tickets_info.user_agent" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>
