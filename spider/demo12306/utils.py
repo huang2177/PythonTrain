@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import pickle
 
-from spider01.demo12306.config import enable_print, code_positions
-from spider01.demo12306.config import station_str, session_file
+from spider.demo12306.config import enable_print, code_positions
+from spider.demo12306.config import station_str, session_file
 
 
 # 将session保存起来
@@ -18,6 +18,8 @@ def get_session():
             return pickle.load(fn)
     except:
         return None
+
+
 
 
 # 打印返回结果

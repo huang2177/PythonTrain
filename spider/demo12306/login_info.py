@@ -3,8 +3,8 @@ import json
 import time
 
 from base.netutils import user_agent
-from spider01.demo12306.config import *
-from spider01.demo12306.utils import print_response, find_positions, save_session
+from spider.demo12306.config import *
+from spider.demo12306.utils import print_response, find_positions, save_session
 
 
 # 登陆相关

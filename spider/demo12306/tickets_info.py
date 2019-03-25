@@ -3,14 +3,14 @@ import ssl
 import time
 
 from base.netutils import user_agent
-from spider01.demo12306.utils import find_station_tag
+from spider.demo12306.utils import find_station_tag
 
 '''
 [3] 车次
 [8] 出发时间
 [9] 达到时间
 [10] 历时
-[23] 软卧一等卧
+[15] train_location
 [23] 软卧一等卧
 [26] 无座
 [28] 硬卧二等卧
@@ -23,7 +23,7 @@ from spider01.demo12306.utils import find_station_tag
 class TicketsInfo(object):
 
     def __init__(self, session):
-        self.secrets = {}
+        self.station_info = []
         self.session = session
 
         self.train_date = ''
@@ -43,7 +43,7 @@ class TicketsInfo(object):
         if self.start_station is None:
             self.stop_station = find_station_tag(input('没有该车站，请重新输入终点站：'))
 
-        self.train_date = time.strftime("%Y-%m-%d", time.localtime())
+        self.train_date = '2019-03-24'
 
         params = {
             'leftTicketDTO.train_date': self.train_date,
@@ -60,23 +60,38 @@ class TicketsInfo(object):
 
         for item in result:
             ticket = item.split('|')
-            if (ticket[29] == '无' or ticket[29] == '--') \
-                    and (ticket[30] == '无' or ticket[30] == '--') \
-                    and (ticket[31] == '无' or ticket[31] == '--'):
-                print('该路线的列车暂无余票！')
+            seat_st = self.show(ticket, 31)
+            seat_nd = self.show(ticket, 30)
+            seat_yz = self.show(ticket, 29)
+            seat_yw = self.show(ticket, 28)
+            if seat_st == '--' and seat_nd == '--' and seat_yz == '--' and seat_yw == '--':
                 return
 
-            print('\n- - - - - - - - - - - - - - - - - - - - - - - ')
-            print('车次 | 出发时间 | 历时 | 一等座 | 二等座 | 硬座 ')
-            print(f'{ticket[3]} | {ticket[8]} | {ticket[10]} | {ticket[31]} | {ticket[30]} | {ticket[29]} ')
-            print('- - - - - - - - - - - - - - - - - - - - - - - \n')
+            print('\n+ + + + + + + + + + + + + + + + + + + + + + + + + + + ')
+            print(' 车次 | 出发时间 | 历时 | 一等座 | 二等座 | 硬座 | 硬卧  ')
+            print(f' {ticket[3]} | {ticket[8]} | {ticket[10]} |  {seat_st}  |   {seat_nd}  |  {seat_yz}  |  {seat_yw} ')
+            print('+ + + + + + + + + + + + + + + + + + + + + + + + + + + \n')
 
-            self.secrets[ticket[3]] = ticket[0]
+            self.station_info.append({'secret': ticket[0],
+                                      'train_num': ticket[3],
+                                      'train_location': ticket[15],
+                                      'seat_st': self.show(ticket, 31),
+                                      'seat_nd': self.show(ticket, 30),
+                                      'seat_yz': self.show(ticket, 29),
+                                      'seat_yw': self.show(ticket, 28), })
+
+    def show(self, ticket, index):
+        if 0 <= index < len(ticket):
+            result = ticket[index]
+            if result == '' or result == '无':
+                result = '--'
+            return result
 
     # 获取预订车票的相关信息
     # (secret, train_date, start_station_name, stop_station_name)
     def get_ticket_info(self, train_num):
-        if train_num in self.secrets:
-            return self.secrets[train_num], self.train_date, self.start_station, self.stop_station
+        for station in self.station_info:
+            if train_num == station['train_num']:
+                return station, self.train_date, self.start_station, self.stop_station
         else:
-            return self.get_ticket_info(input('你输入的车不存在！请重新输入：'))
+            return self.get_ticket_info(input('你输入的车次有误！请重新输入：'))
