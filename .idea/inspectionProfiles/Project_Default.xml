@@ -15,6 +15,7 @@
           <option value="spider01.demo12306.login_info.print_response" />
           <option value="spider01.demo12306.tickets_info.find_station_tag" />
           <option value="spider01.demo12306.tickets_info.user_agent" />
+          <option value="django.mysite.mysite.urls.login" />
         </list>
       </option>
     </inspection_tool>
