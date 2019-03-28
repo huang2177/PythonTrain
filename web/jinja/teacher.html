@@ -1,0 +1,33 @@
+<html>
+<meta charset="UTF-8">
+<center>
+    <body style="align-content: center">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>tno</th>
+            <th>tname</th>
+            <th>tsex</th>
+            <th>tbirthday</th>
+            <th>prof</th>
+            <th>depart</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </body>
+</center>
+
+</html>
