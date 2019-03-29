@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clazz</title>
+    <link rel="stylesheet" href="/static/clazz.css"/>
+
+</head>
+<body style="text-align: center">
+<h3>班级列表</h3>
+<p><a href="/add_clazz/">添加班级</a></p>
+<p><a onclick="showDialog();">对话框添加</a></p>
+<table align="center" border="1">
+    <thead>
+    <tr>
+        <td> 班级名称</td>
+        <td> 班级编号</td>
+        <td> 操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in data %}
+        <tr>
+            <td> {{ row.1 }} </td>
+            <td> {{ row.2 }} </td>
+            <td>
+                <h5><a href="/edit_clazz/?c_id={{ row.2 }}"> 编辑 </a></h5>
+                <h5><a href="/del_clazz/?c_id={{ row.2 }}"> 删除 </a></h5>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div id="dialog" class="dialog hide">
+    <h3>班级列表</h3>
+    <form method="POST" action="/add_clazz/">
+        <p>班级名称：<input type="text" name="c_name"/></p>
+        <p>班级编号：<input type="text" name="c_id"/></p>
+        <input type="submit" value="提交" onclick="close()"/>
+    </form>
+</div>
+
+<div id="shadow" class="shadow hide"/>
+<script>
+
+    function showDialog() {
+        document.getElementById('shadow').classList.remove('hide');
+        document.getElementById('dialog').classList.remove('hide');
+    }
+
+    function close() {
+        document.getElementById('dialog').classList.add('hide');
+        document.getElementById('shadow').classList.add('hide');
+    }
+
+</script>
+
+</body>
+</html>

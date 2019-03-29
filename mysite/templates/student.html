@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生列表</title>
+</head>
+<body>
+<center>
+    <h3>学生列表</h3>
+    <p>
+        <a href="/add_student/">添加学生</a>
+    </p>
+    <table border="1">
+        <thead>
+        <tr>
+            <td>学生姓名</td>
+            <td>班级名称</td>
+            <td>学生学号</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}
+            <tr>
+                <td>{{ row.0 }}</td>
+                <td>{{ row.1 }}</td>
+                <td>{{ row.2 }}</td>
+                <td>
+                    <h5><a href="/edit_student/?s_name={{ row.0 }}"> 编辑 </a></h5>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</center>
+</body>
+</html>

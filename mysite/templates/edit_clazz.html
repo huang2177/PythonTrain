@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑班级</title>
+</head>
+<body style="text-align: center">
+<center>
+    <h3>编辑班级</h3>
+    <form method="POST" action="/edit_clazz/?c_id={{ data.2 }}">
+        <p>班级名称：<input type="text" name="c_name" value="{{ data.1 }}"/></p>
+        <input type="text" name="c_id" value="{{ data.2 }}" style="display: none"/>
+        <input type="submit" value="提交"/>
+    </form>
+</center>
+</body>
+</html>

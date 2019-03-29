@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑学生</title>
+</head>
+<body>
+<center>
+    <h3>编辑学生</h3>
+    <form method="POST" action="/edit_student/?s_id={{ stu.1 }}">
+        <p>学生姓名：<input type="text" name="s_name" value="{{ s_name }}"/></p>
+        <p>所属班级：
+            <select name="c_id">
+                {% for row in clazz %}
+                    {% if row.0 == stu.0 %}
+                        <option selected="selected" value="{{ row.0 }}">{{ row.1 }}</option>
+                    {% else %}
+                        <option value="{{ row.0 }}">{{ row.1 }}</option>
+                    {% endif %}
+                {% endfor %}
+
+            </select>
+        </p>
+        <input type="submit" value="提交"/>
+    </form>
+</center>
+</body>
+</html>
